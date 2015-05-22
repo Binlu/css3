@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="lut"/>
+<meta name="keywords" content="css3"/>
+<title>每日练习css3动画</title>
+<style type="text/css">
+	*{
+		padding: 0px;
+		margin: 0px;
+	}
+	html,body{
+		font-size: 20px;
+		background: #000;
+		height: 100%;
+		width: 100%;
+		overflow: hidden;
+	}
+	.div1{
+		width: 400px;
+		height: 400px;
+		padding: 50px;
+		border: 2px solid #B28B10;
+		position: relative;
+		margin: 50px auto;
+		border-radius: 10px;
+		z-index: 0;
+	}
+	.circle{
+		width: 18px;
+		height: 18px;
+		border-radius: 9px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		background: #3197EC;
+		margin-top: -9px;
+		margin-left: -9px;
+		z-index: 105;
+	}
+	.pointer{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		-webkit-transform: rotate(-90deg);
+		-o-transform: rotate(-90deg);
+		-moz-transform: rotate(-90deg);
+		z-index: 100;
+	}
+	.h{
+		width: 100px;
+		height: 8px;
+		background: #996699;
+		margin-top: -4px;
+		transform-origin: 0px 4px;
+		-ms-transform-origin: 0px 4px;
+		-webkit-transform-origin: 0px 4px;
+		-o-transform-origin: 0px 4px;
+		-moz-transform-origin: 0px 4px;
+		z-index: 101;
+	}
+	.m{
+		width: 130px;
+		height: 6px;
+		background: #9AB5DF;
+		margin-top: -3px;
+		transform-origin: 0px 3px;
+		-ms-transform-origin: 0px 3px;
+		-webkit-transform-origin: 0px 3px;
+		-o-transform-origin: 0px 3px;
+		-moz-transform: 0px 3px;
+		z-index: 102;
+	}
+	.s{
+		width: 180px;
+		height: 4px;
+		background: #f00;
+		margin-top: -2px;
+		transform-origin: 0px 2px;
+		-ms-transform-origin: 0px 2px;
+		-webkit-transform-origin: 0px 2px;
+		-o-transform-origin: 0px 2px;
+		-moz-transform-origin: 0px 2px;
+		z-index: 103;
+	}
+	.spn{
+		position: absolute;
+		display: block;
+		width: 4px;
+		height: 10px;
+		background: #9AB5DF;
+		left: 50%;
+		margin-left: -2px;
+		transform-origin: 2px 200px;
+		-ms-transform-origin: 2px 200px;
+		-webkit-transform-origin: 2px 200px;
+		-o-transform-origin: 2px 200px;
+		-moz-transform-origin: 2px 200px;
+	}
+	.h_spn{
+		width: 8px;
+		height: 18px;
+		border-radius: 0px 0px 3px 3px;
+		color: #3197EC;
+		margin-left: 0px;
+		line-height: 60px;
+		text-align: center;
+		margin-left: -4px;
+		background: #3197EC;
+		transform-origin: 4px 200px;
+		-ms-transform-origin: 4px 200px;
+		-webkit-transform-origin: 4px 200px;
+		-o-transform-origin: 4px 200px;
+		-moz-transform-origin: 4px 200px;
+	}
+	.word_sty{
+		height: 80px;
+		line-height: 80px;
+		text-align: center;
+		position: absolute;
+		left: 0px;
+		font-weight: bold;
+
+	}
+	.tips{
+		width: 100%;
+		height: 100%;
+		padding: 50px;
+		line-height: 100%;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		z-index: 10;
+		background: #fff;
+		border: 1px solid red;
+		display: none;
+	}
+	</style>
+</head>
+
+<body>
+	<!-- 框子 -->
+	<div class="div1">
+		<!-- 时针 -->
+		<div class="pointer h"></div>
+		<!-- 分针 -->
+		<div class="pointer m"></div>
+		<!-- 秒针 -->
+		<div class="pointer s"></div>
+		<!-- 圈圈 -->
+		<div class="circle"></div>
+	</div>
+	<div class="tips">
+		您的浏览器版本不支持css3的部分新属性，请升级到<a title="下载地址" href="http://www.skycn.com/s.php?q=ie10&st=0">IE10+</a>或者<a title="下载地址" href="http://www.skycn.com/s.php?q=chrome&st=0">chrome</a>浏览器浏览本页面，谢谢。
+		<a href="javascript:;" onclick="window.close()">关闭页面</a>
+	</div>
+	<script type="text/javascript">
+		window.onload=function(){
+			// 支持情况
+			var supports = (function() { 
+				var div = document.createElement('div'), 
+				vendors = 'Khtml O Moz Webkit'.split(' '), 
+				len = vendors.length; 
+				return function(prop) { 
+				if ( prop in div.style ) return true; 
+				if ('-ms-' + prop in div.style) return true; 
+				prop = prop.replace(/^[a-z]/, function(val) { 
+					return val.toUpperCase(); 
+				}); 
+				while(len--) { 
+					if ( vendors[len] + prop in div.style ) { 
+						return true; 
+					} 
+				} 
+				return false; 
+				}; 
+			})(); 
+			if (!supports('transform') ) { 
+				getByClass(document,"tips")[0].style.display="block";
+			} 
+			var oDiv1=getByClass(document,"div1")[0];
+			var oH=getByClass(oDiv1,"h")[0];
+			var oM=getByClass(oDiv1,"m")[0];
+			var oS=getByClass(oDiv1,"s")[0];
+
+			// 写刻度
+			for(var i=0;i<60;i++){
+				var oSpan=document.createElement("span");
+				oSpan.className="spn";
+				if(i%5==0){
+					var oEm=document.createElement("em");
+					i==0?oEm.innerHTML=12:oEm.innerHTML=i/5;
+					oEm.className="word_sty";
+					oSpan.appendChild(oEm);
+					oSpan.className="spn h_spn";
+					oEm.style.transform="rotate("+(-6*i)+"deg)";
+				}
+				oDiv1.appendChild(oSpan);
+				oSpan.style.transform="rotate("+(6*i)+"deg)";
+			}
+			getByClass(oDiv1,"word_sty")[0].style.left=-8+"px";
+			getByClass(oDiv1,"word_sty")[11].style.left=-8+"px";
+			getByClass(oDiv1,"word_sty")[10].style.left=-8+"px";
+			// 安装指针
+			function getTime(){
+				var data=new Date();
+				var h=data.getHours();
+				var m=data.getMinutes();
+				var s=data.getSeconds();
+				var now_s=s*6;
+				var now_m=m*6+s*0.1;
+				var now_h=0;
+				h<12?now_h=h:now_h=h-12;
+
+				oS.style.transform="rotate("+(-90+now_s)+"deg)";
+				oM.style.transform="rotate("+(-90+now_m)+"deg)";
+				oH.style.transform="rotate("+(-90+now_h*30+m*0.5+s/120)+"deg)";
+
+				myShadow(now_s,oS);
+				myShadow(now_m,oM);
+				myShadow(now_h*30+m*0.5+s/120,oH);
+				// 添加效果
+				function myShadow(num,obj){
+					var lut_sx=num>180?(180-(num-180)):num;
+					var lut_sy=0;
+					if(num<=180){
+						lut_sy=num<90?num*8/90:(180-num)/90;
+					}
+					else{
+						lut_sy=num>270?-(360-num)*8/90:-(num-180)*8/90;
+					}
+					obj.style.boxShadow=lut_sx*6/180+"px "+lut_sy+"px 5px #000";
+				}	
+			}
+			setInterval(getTime,1000);
+		}
+		function getByClass(oParent,sClass){
+			var aEle=oParent.getElementsByTagName("*");
+			var aResult=[];
+			for(var i=0,tt=aEle.length;i<tt;i++){
+				if(aEle[i].className.indexOf(sClass)>=0){
+					var arr_class=aEle[i].className.split(" ");
+					for(var j=0,len=arr_class.length;j<len;j++){
+						if(arr_class[j]==sClass){
+							aResult.push(aEle[i]);
+						}
+					}
+				}
+			}
+			return aResult;
+		}
+	</script>
+</body>
+</html>
