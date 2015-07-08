@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="author" content="lut"/>
+<meta name="keywords" content="css3"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/> 
+<title>css3的loading</title>
+<style type="text/css">
+    *{padding: 0;margin: 0}
+    h1{
+    	text-align: center;
+    	margin: 2% auto;
+    }
+    h2{
+    	margin: 2% auto;
+    }
+    .content{
+    	width: 100%;
+    }
+    .box{
+    	width: 47%;
+    	margin-left: 2%;
+    	text-align: center;
+    	border: 1px solid #aaa;
+    	float: left;
+    }
+    .box>div{
+        display: inline-block;
+        margin: 50px;
+    }
+    .type1{
+        width: 10px;
+        height: 10px;
+        padding: 1px;
+        border-radius: 50%;
+        box-shadow: 0 -30px 0px #02CFFF,-21px -21px 1px #3ACDEF,-30px 0px 1px #62CAE2,-21px 21px 1px #71D6ED,0px 30px 2px #8CDCEF,21px 21px 2px #A5E1EF,30px 0px 3px #BCE4ED,21px -21px 4px #C0E7F0;
+        animation: loading1 2s cubic-bezier(.4,.9,.47,.81) infinite;
+        -webkit-animation: loading1 2s cubic-bezier(.4,.9,.47,.81) infinite;
+        -ms-animation: loading1 2s cubic-bezier(.4,.9,.47,.81) infinite;
+        -moz-animation: loading1 2s cubic-bezier(.4,.9,.47,.81) infinite;
+        -o-animation: loading1 2s cubic-bezier(.4,.9,.47,.81) infinite;
+    }
+    .type2{
+        width: 10px;
+        height: 10px;
+        padding: 1px;
+        border-radius: 50%;
+        box-shadow: 0 -30px 0px #02CFFF,-21px -21px 1px #3ACDEF,-30px 0px 1px #62CAE2,-21px 21px 1px #71D6ED,0px 30px 2px #8CDCEF,21px 21px 2px #A5E1EF,30px 0px 3px #BCE4ED,21px -21px 4px #C0E7F0;
+        animation: loading1 2s steps(8, start) infinite;
+        -webkit-animation: loading1 2s steps(8, start) infinite;
+        -ms-animation: loading1 2s steps(8, start) infinite;
+        -moz-animation: loading1 2s steps(8, start) infinite;
+        -o-animation: loading1 2s steps(8, start) infinite;
+    }
+    .type3{
+        width: 10px;
+        height: 10px;
+        padding: 1px;
+        border-radius: 50%;
+        box-shadow: 0 -30px 0px 3px #02CFFF,-21px -21px 1px 2px #3ACDEF,-30px 0px 1px 1.5px #62CAE2,-21px 21px 1px 1.2px #71D6ED,0px 30px 2px 1px #8CDCEF,21px 21px 2px 1px #A5E1EF,30px 0px 3px #BCE4ED,21px -21px 4px #C0E7F0;
+        animation: loading1 1s steps(8, start) infinite;
+        -ms-animation: loading1 1s steps(8, start) infinite;
+        -webkit-animation: loading1 1s steps(8, start) infinite;
+        -moz-animation: loading1 1s steps(8, start) infinite;
+        -o-animation: loading1 1s steps(8, start) infinite;
+    }
+    .type4{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #eee;
+        position: relative;
+        transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        border: 5px solid #222;
+    }
+    .spn1{
+        position: absolute;
+        top: 0px;
+        border: 1px solid #420;
+        border-radius: 50%;
+        top: -5px;
+        left: -5px;
+        width: 100%;
+        height: 100%;
+        display: block;
+        border: 5px solid #2de;
+        border-right-color:transparent;border-top-color:transparent;
+        animation: loading4 5s linear infinite normal;
+        -ms-animation: loading4 5s linear infinite normal;
+        -webkit-animation: loading4 5s linear infinite normal;
+        -moz-animation: loading4 5s linear infinite normal;
+        -o-animation: loading4 5s linear infinite normal;
+    }
+    .spn2{
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        display: block;
+        border: 5px solid #333;
+        border-right-color:transparent;border-top-color:transparent;
+        animation: loading2 5s steps(1,end) infinite normal;
+        -ms-animation: loading2 5s steps(1,end) infinite normal;
+        -webkit-animation: loading2 5s steps(1,end) infinite normal;
+        -moz-animation: loading2 5s steps(1,end) infinite normal;
+        -o-animation: loading2 5s steps(1,end) infinite normal;
+    }
+    #txt{
+        width: 100%;
+        height: 20px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        margin: auto;
+        transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+    }
+    div.type5{
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        bottom: 50px;
+        padding: 5px;
+        margin: auto;
+        background:-webkit-linear-gradient(top, #25E5FE,#FFF);
+        background:-moz-linear-gradient(top, #25E5FE,#FFF);
+        clip: rect(0,45px,90px,0);
+        animation: loading1 1s linear infinite;
+        -ms-animation: loading1 1s linear infinite;
+        -webkit-animation: loading1 1s linear infinite;
+        -moz-animation: loading1 1s linear infinite;
+        -o-animation: loading1 1s linear infinite;
+        border-radius: 50%;
+    }
+    .spn3{
+        /*position: absolute;*/
+        display: block;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        border-radius: 50%;
+        background-color: #fff;
+    }
+    @keyframes loading1{
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+    @-ms-keyframes loading1{
+        0%{
+            -ms-transform: rotate(0deg);
+        }
+        100%{
+            -ms-transform: rotate(360deg);
+        }
+    }
+    @-webkit-keyframes loading1{
+        0%{
+            -webkit-transform: rotate(0deg);
+        }
+        100%{
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    @-moz-keyframes loading1{
+        0%{
+            -moz-transform: rotate(0deg);
+        }
+        100%{
+            -moz-transform: rotate(360deg);
+        }
+    }
+    @-o-keyframes loading1{
+        0%{
+            -o-transform: rotate(0deg);
+        }
+        100%{
+            -o-transform: rotate(360deg);
+        }
+    }
+    @keyframes loading4{
+        0%{ 
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+    @-ms-keyframes loading4{
+        0%{ 
+            -ms-transform: rotate(0deg);
+        }
+        100%{
+            -ms-transform: rotate(360deg);
+        }
+    }
+    @-webkit-keyframes loading4{
+        0%{ 
+            -webkit-transform: rotate(0deg);
+        }
+        100%{
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    @-moz-keyframes loading4{
+        0%{ 
+            -moz-transform: rotate(0deg);
+        }
+        100%{
+            -moz-transform: rotate(360deg);
+        }
+    }
+    @-o-keyframes loading4{
+        0%{ 
+            -o-transform: rotate(0deg);
+        }
+        100%{
+            -o-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes loading2{
+        50%{
+            border-right-color:#2de;border-top-color:#2de;
+            border-left-color:transparent;border-bottom-color:transparent;
+        }
+    }
+    @-ms-keyframes loading2{
+        50%{
+            border-right-color:#2de;border-top-color:#2de;
+            border-left-color:transparent;border-bottom-color:transparent;
+        }
+    }
+    @-webkit-keyframes loading2{
+        50%{
+            border-right-color:#2de;border-top-color:#2de;
+            border-left-color:transparent;border-bottom-color:transparent;
+        }
+    }
+    @-moz-keyframes loading2{
+        50%{
+            border-right-color:#2de;border-top-color:#2de;
+            border-left-color:transparent;border-bottom-color:transparent;
+        }
+    }
+    @-o-keyframes loading2{
+        50%{
+            border-right-color:#2de;border-top-color:#2de;
+            border-left-color:transparent;border-bottom-color:transparent;
+        }
+    }
+    #warning_info{
+        width: 100%;
+        padding: 20px;
+        background: #aaa;
+    }
+</style>
+    
+</head>
+
+<body>
+    <!--[if lte IE 10]>
+        <div id="warning_info" class="text-warning fade in mb_0">
+            <button data-dismiss="alert" class="close" type="button">×</button>
+            <strong>您正在使用低版本浏览器，</strong> 无法完整的显示页面效果。
+            建议您升级到
+            <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" target="_blank">
+                Internet Explorer 10+</a>
+            或使用谷歌浏览器：<a href="http://www.google.cn/intl/zh-CN/chrome/" target="_blank">Chrome</a>
+            
+        </div>
+        <script type="text/javascript">
+            var oDiv=document.getElementById("warning_info");
+            var oBtn=oDiv.getElementsByTagName("button")[0];
+            oBtn.onclick=function(){
+                document.body.removeChild(oDiv);
+            }
+        </script>
+    <![endif]-->
+
+    <h1>css3实现loading</h1>
+    <section class="content">
+    	<div class="box">
+    		<h2>loading 1</h2>
+            <div class="type1"></div>
+    	</div>
+    	<div class="box">
+    		<h2>loading 2</h2>
+    		<div class="type2"></div>
+    	</div>
+    	<div class="box">
+    		<h2>loading 3</h2>
+    		<div class="type3"></div>
+    	</div>
+        <div class="box">
+            <h2>loading 4</h2>
+            <div class="type4">
+                <div id="txt">loading</div>
+                <span class="spn1"></span>
+                <span class="spn2"></span>
+            </div>
+        </div>
+        <div class="box" style="position: relative;height: 250px;">
+            <h2>loading 5</h2>
+            <div class="type5">
+                <span class="spn3"></span>
+            </div>
+        </div>
+    </section>
+<script type="text/javascript">
+	window.onload=function(){
+	   var oDiv=document.getElementById("txt");
+       var timer=null;
+       var num=0;
+       timer=setInterval(function(){
+            oDiv.innerHTML=num+"%";
+            num++;
+            if(num>=101){
+                clearInterval(timer);
+                num=0;
+                console.log("已结加载好了。。。");
+            }
+        },50)
+	}
+</script>
+</body>
+</html>
